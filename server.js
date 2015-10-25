@@ -10,8 +10,8 @@ var Hapi = require('hapi'),
         },
         js: {
             method: 'GET',
-            path: '/js/{path*}',
-            handler: createDirectoryRoute('js')
+            path: '/scripts/{path*}',
+            handler: createDirectoryRoute('scripts')
         },
         images: {
             method: 'GET',

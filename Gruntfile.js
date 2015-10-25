@@ -10,7 +10,7 @@ module.exports = function(grunt) {
         browserify: {
             dist: {
                 files: {
-                    './dist/js/app.js': ['./app/scripts/app.js']
+                    './dist/scripts/app.js': ['./app/scripts/app.js']
                 }
             }
         },
@@ -77,7 +77,7 @@ module.exports = function(grunt) {
                 }, {
                   expand: true,
                   src: [ './**/*.js' ],
-                  dest: './dist/js',
+                  dest: './dist/scripts',
                   cwd: './app/scripts'
                 }]
             }
