@@ -1,0 +1,11 @@
+<div class="pomodoro">
+    <div class="container">
+        <label>
+            <input type="text" value="{{timeInSeconds | prettyTime}}" class="timer"/>
+        </label>
+        <button class="btn"
+                ng-class="{'stop-button' : isRunning}"
+                ng-click="startStop()">
+                <span>{{ buttonText }}</span></button>
+    </div>
+</div>

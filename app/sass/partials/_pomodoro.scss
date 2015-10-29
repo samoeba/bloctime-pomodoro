@@ -1,0 +1,21 @@
+.pomodoro {
+    height: 60%;
+    width: 100%;
+    margin-top: 130px;
+    .container {
+        width: 60%;
+        margin: 0 auto;
+        .timer {
+            display: block;
+            width: 180px;
+            text-align: center;
+            margin: 0 auto;
+            border: 0;
+            font: 70px "Helvetic Neue", sans-serif;
+            color: #555;
+            &:focus {
+                outline: 0;
+            };
+        }
+    }
+}
