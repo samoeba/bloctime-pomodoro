@@ -5,11 +5,18 @@
     .container {
         width: 60%;
         margin: 0 auto;
-        .timer {
+        p, .timer {
             display: block;
-            width: 180px;
             text-align: center;
             margin: 0 auto;
+        }
+        p {
+            font: 20px "Helvetic Neue", sans-serif;
+            width: 500px;
+            line-height: 30px;
+        }
+        .timer {
+            width: 180px;
             border: 0;
             font: 70px "Helvetic Neue", sans-serif;
             color: #555;

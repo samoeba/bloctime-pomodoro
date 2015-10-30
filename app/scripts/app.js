@@ -12,3 +12,9 @@ blocTime.config(function($stateProvider, $locationProvider) {
             controller: 'MainCtrl'
         });
 });
+
+blocTime.constant("SESSION_NAMES", {
+    "POMODORO": "pomodoro",
+    "SHORT_BREAK": "shortBreak",
+    "LONG_BREAK": "longBreak"
+});
