@@ -1,6 +1,6 @@
 <div class="pomodoro">
     <div class="container">
-        <p>{{ totalPomodoros }} Pomodoro(s) Completed <br /> {{ sessionName }} Session</p>
+        <p ng-show="sessionName">{{ totalPomodoros }} Pomodoro(s) Completed <br /> {{ sessionName }} Session</p>
         <br />
         <input type="text" value="{{timeInSeconds | prettyTime}}" class="timer"/>
         <button class="btn"

@@ -15,7 +15,7 @@ pomodoroDirectives.directive("timer", ["SESSION_NAMES", function (SESSION_NAMES)
             $scope.buttonText = "Start Pomodoro";
             $scope.isRunning = false;
             $scope.totalPomodoros = 0;
-            $scope.timeInSeconds = 0;
+            $scope.timeInSeconds = 1500;
 
             determineSessionTime = function () {
                 if (currentSession === SESSION_NAMES.POMODORO) {
