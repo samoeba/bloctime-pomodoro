@@ -1,4 +1,4 @@
-var blocTime = angular.module("blocTime", ["firebase", "ui.router"]);
+var blocTime = angular.module("blocTime", ["firebase", "ui.router", "directives", "filters"]);
 
 blocTime.config(function($stateProvider, $locationProvider) {
     $locationProvider.html5Mode({
@@ -11,4 +11,10 @@ blocTime.config(function($stateProvider, $locationProvider) {
             templateUrl: '../templates/home.html',
             controller: 'MainCtrl'
         });
+});
+
+blocTime.constant("SESSION_NAMES", {
+    "POMODORO": "pomodoro",
+    "SHORT_BREAK": "shortBreak",
+    "LONG_BREAK": "longBreak"
 });

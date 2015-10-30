@@ -1,9 +1,10 @@
 angular.module("blocTime")
 
-    .controller("MainCtrl", ["$scope", "$firebaseArray", function($scope, $firebaseArray) {
+    .controller("MainCtrl", ["$scope", "$interval", "$firebaseArray", function($scope, $interval, $firebaseArray) {
         "use strict";
 
-        var ref = new Firebase("https://fh9olz0esil.firebaseio-demo.com/");
+        var ref = new Firebase("https://brilliant-torch-364.firebaseio.com/");
         $scope.messages = $firebaseArray(ref);
-        $scope.test = "Hello World!";
+        $scope.test = "Can you hear me now?";
+
     }]);
