@@ -7,4 +7,6 @@ angular.module("blocTime")
         $scope.messages = $firebaseArray(ref);
         $scope.test = "Can you hear me now?";
 
+
     }]);
+

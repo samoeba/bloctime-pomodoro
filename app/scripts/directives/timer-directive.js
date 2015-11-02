@@ -11,6 +11,15 @@ pomodoroDirectives.directive("timer", ["SESSION_NAMES", function (SESSION_NAMES)
         controller: ["$scope", "$interval", function ($scope, $interval) {
             var currentSession, determineSessionTime, determineButtonText, startCountdown, stopCountdown, nextSession;
 
+            var timerDing = new buzz.sound( "/assets/audio/ding.mp3", {
+                preload: true
+            });
+
+            //$scope.$watch("isRunning", function() {
+            //    timerDing.play();
+            //    console.log("Played Ding!");
+            //});
+
             currentSession = "pomodoro";
             $scope.buttonText = "Start Pomodoro";
             $scope.isRunning = false;
@@ -65,6 +74,7 @@ pomodoroDirectives.directive("timer", ["SESSION_NAMES", function (SESSION_NAMES)
                 startCountdown = $interval(function() {
                     $scope.timeInSeconds -= 1;
                     if ($scope.timeInSeconds < 0) {
+                        timerDing.play();
                         stopCountdown();
                         $scope.isRunning = false;
                         nextSession();
@@ -100,6 +110,11 @@ pomodoroDirectives.directive("timer", ["SESSION_NAMES", function (SESSION_NAMES)
                     currentSession = "pomodoro";
                     $scope.startStop();
                 }
+            };
+
+            $scope.testPlay = function () {
+                console.log("testing the ding");
+                timerDing.play();
             };
         }]
     };

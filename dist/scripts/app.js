@@ -18,3 +18,4 @@ blocTime.constant("SESSION_NAMES", {
     "SHORT_BREAK": "shortBreak",
     "LONG_BREAK": "longBreak"
 });
+
