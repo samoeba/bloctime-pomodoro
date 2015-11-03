@@ -2,24 +2,25 @@
     height: 60%;
     width: 100%;
     margin-top: 130px;
+    p {
+        display: block;
+        text-align: center;
+        margin: 0 auto;
+        font: 40px "Helvetic Neue", sans-serif;
+        width: auto;
+        height: 120px;
+        line-height: 60px;
+        position: absolute;
+        left: 36%;
+        top: 30px;
+    }
     .container {
         width: 80%;
-        margin: 300px auto 0;
-        p, .timer {
+        margin: 100px auto 0;
+        .timer {
             display: block;
             text-align: center;
             margin: 0 auto;
-        }
-        p {
-            font: 40px "Helvetic Neue", sans-serif;
-            width: auto;
-            height: 120px;
-            line-height: 60px;
-            position: absolute;
-            left: 36%;
-            top: 160px;
-        }
-        .timer {
             width: 600px;
             border: 0;
             font: 200px "Helvetic Neue", sans-serif;

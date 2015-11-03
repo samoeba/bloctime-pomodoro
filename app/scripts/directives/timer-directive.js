@@ -11,6 +11,18 @@ pomodoroDirectives.directive("timer", ["SESSION_NAMES", function (SESSION_NAMES)
         controller: ["$scope", "$interval", function ($scope, $interval) {
             var currentSession, determineSessionTime, determineButtonText, startCountdown, stopCountdown, nextSession;
 
+            $scope.$watch("timeInSeconds", function(value) {
+                if (value <= 0) {
+                    timerDing.play();
+                    console.log("Played Ding!");
+                }
+            });
+
+            var timerDing = new buzz.sound( "/assets/audio/ding", {
+                formats: [ "mp3" ],
+                preload: true
+            });
+
             currentSession = "pomodoro";
             $scope.buttonText = "Start Pomodoro";
             $scope.isRunning = false;
@@ -22,7 +34,7 @@ pomodoroDirectives.directive("timer", ["SESSION_NAMES", function (SESSION_NAMES)
                     $scope.timeInSeconds = 5;
                     $scope.sessionName = "Pomodoro";
                 } else if (currentSession === SESSION_NAMES.SHORT_BREAK) {
-                    $scope.timeInSeconds = 1;
+                    $scope.timeInSeconds = 2;
                     $scope.sessionName = "Short Break";
                 } else if (currentSession === SESSION_NAMES.LONG_BREAK) {
                     $scope.timeInSeconds = 4;
@@ -46,7 +58,6 @@ pomodoroDirectives.directive("timer", ["SESSION_NAMES", function (SESSION_NAMES)
             };
 
             $scope.startStop = function () {
-                console.log($scope.isRunning);
                 if ($scope.isRunning === true) {
                     stopCountdown();
                     determineSessionTime();
@@ -56,14 +67,13 @@ pomodoroDirectives.directive("timer", ["SESSION_NAMES", function (SESSION_NAMES)
                 }
 
                 $scope.isRunning = !$scope.isRunning;
-                console.log("Start " + currentSession + " session!");
                 determineSessionTime();
 
-                console.log($scope.isRunning);
                 determineButtonText();
 
                 startCountdown = $interval(function() {
                     $scope.timeInSeconds -= 1;
+
                     if ($scope.timeInSeconds < 0) {
                         stopCountdown();
                         $scope.isRunning = false;
@@ -87,7 +97,6 @@ pomodoroDirectives.directive("timer", ["SESSION_NAMES", function (SESSION_NAMES)
 
                 if (currentSession === "pomodoro") {
                     $scope.totalPomodoros += 1;
-                    console.log($scope.totalPomodoros + " Pomodoro(s)");
                     if ($scope.totalPomodoros >= 4) {
                         $scope.totalPomodoros = 0;
                         currentSession = "longBreak";
