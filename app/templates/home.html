@@ -10,8 +10,14 @@
 <div class="tasks">
     <div class="container">
         <h1>Task History</h1>
-        <input type="text"/>
-        <button class="btn">Add Task</button>
+        <form name="taskHistory">
+            <input type="text" ng-model="task.task"/>
+            <input type="submit" value="Submit" class="btn"/>
+            <div class="completed-tasks">
+                <!--<p ng-repeat="task in completedTasks">Hello {{ task.task }}</p>-->
+                <p>{{ completedTask }}</p>
+            </div>
+        </form>
     </div>
 </div>
 
