@@ -20,6 +20,12 @@
     }
 }
 
+.test {
+    margin-top: 30px;
+    font: 34px "Helvetic Neue", sans-serif;
+    padding: 6px;
+}
+
 .stop-button {
     //@extend .btn;
     background-color: $error;
