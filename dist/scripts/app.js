@@ -1,4 +1,3 @@
-(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 var blocTime = angular.module("blocTime", ["firebase", "ui.router", "directives", "filters"]);
 
 blocTime.config(function($stateProvider, $locationProvider) {
@@ -9,8 +8,13 @@ blocTime.config(function($stateProvider, $locationProvider) {
     $stateProvider
         .state('home', {
             url: '/home',
-            templateUrl: '../templates/home.html',
+            templateUrl: '/templates/home.html',
             controller: 'MainCtrl'
         });
 });
-},{}]},{},[1]);
+
+blocTime.constant("SESSION_NAMES", {
+    "POMODORO": "pomodoro",
+    "SHORT_BREAK": "shortBreak",
+    "LONG_BREAK": "longBreak"
+});

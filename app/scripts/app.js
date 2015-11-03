@@ -8,7 +8,13 @@ blocTime.config(function($stateProvider, $locationProvider) {
     $stateProvider
         .state('home', {
             url: '/home',
-            templateUrl: '../templates/home.html',
+            templateUrl: '/templates/home.html',
             controller: 'MainCtrl'
         });
+});
+
+blocTime.constant("SESSION_NAMES", {
+    "POMODORO": "pomodoro",
+    "SHORT_BREAK": "shortBreak",
+    "LONG_BREAK": "longBreak"
 });

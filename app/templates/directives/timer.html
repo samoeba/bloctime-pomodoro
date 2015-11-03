@@ -1,11 +1,11 @@
 <div class="pomodoro">
+    <p ng-show="sessionName">{{ totalPomodoros }} Pomodoro(s) Completed <br /> {{ sessionName }} Session</p>
     <div class="container">
-        <label>
-            <input type="text" value="{{timeInSeconds | prettyTime}}" class="timer"/>
-        </label>
+        <input type="text" value="{{timeInSeconds | prettyTime}}" class="timer"/>
         <button class="btn"
                 ng-class="{'stop-button' : isRunning}"
                 ng-click="startStop()">
-                <span>{{ buttonText }}</span></button>
+                <span>{{ buttonText }}</span>
+        </button>
     </div>
 </div>

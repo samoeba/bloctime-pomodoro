@@ -3,6 +3,11 @@ var Hapi = require('hapi'),
     port = process.env.PORT || 3000,
     server = new Hapi.Server(port),
     routes = {
+        assets: {
+            method: 'GET',
+            path: '/assets/{path*}',
+            handler: createDirectoryRoute('assets')
+        },
         css: {
             method: 'GET',
             path: '/css/{path*}',
@@ -12,11 +17,6 @@ var Hapi = require('hapi'),
             method: 'GET',
             path: '/scripts/{path*}',
             handler: createDirectoryRoute('scripts')
-        },
-        images: {
-            method: 'GET',
-            path: '/images/{path*}',
-            handler: createDirectoryRoute('images')
         },
         templates: {
             method: 'GET',
@@ -32,7 +32,7 @@ var Hapi = require('hapi'),
         }
     };
 
-server.route([ routes.css, routes.js, routes.images, routes.templates, routes.spa ]);
+server.route([ routes.css, routes.js, routes.templates, routes.spa, routes.assets ]);
 server.start( onServerStarted );
 
 function onServerStarted() {

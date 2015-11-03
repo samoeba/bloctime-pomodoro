@@ -21,7 +21,7 @@ module.exports = function(grunt) {
                     style: 'expanded'
                 },
                 files: {
-                    './dist/css/style.css': './app/sass/style.scss'
+                    './dist/css/main.css': './app/sass/main.scss'
                 }
             }
         },
@@ -29,7 +29,7 @@ module.exports = function(grunt) {
         autoprefixer: {
             dist: {
                 files: {
-                    './dist/css/style.css': './dist/css/style.css'
+                    './dist/css/main.css': './dist/css/main.css'
                 }
             }
         },
@@ -61,8 +61,8 @@ module.exports = function(grunt) {
             dist: {
                 files: [{
                     expand: true,
-                    src: [ './images/*.{png,jpg,jpeg}' ],
-                    dest: './dist/images',
+                    src: [ './assets/**' ],
+                    dest: './dist/',
                     cwd: './app'
                 }, {
                     expand: true,
