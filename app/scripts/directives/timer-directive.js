@@ -34,7 +34,7 @@ pomodoroDirectives.directive("timer", ["SESSION_NAMES", function (SESSION_NAMES)
                     $scope.timeInSeconds = 5;
                     $scope.sessionName = "Pomodoro";
                 } else if (currentSession === SESSION_NAMES.SHORT_BREAK) {
-                    $scope.timeInSeconds = 1;
+                    $scope.timeInSeconds = 2;
                     $scope.sessionName = "Short Break";
                 } else if (currentSession === SESSION_NAMES.LONG_BREAK) {
                     $scope.timeInSeconds = 4;
@@ -73,6 +73,7 @@ pomodoroDirectives.directive("timer", ["SESSION_NAMES", function (SESSION_NAMES)
 
                 startCountdown = $interval(function() {
                     $scope.timeInSeconds -= 1;
+
                     if ($scope.timeInSeconds < 0) {
                         stopCountdown();
                         $scope.isRunning = false;
@@ -108,11 +109,6 @@ pomodoroDirectives.directive("timer", ["SESSION_NAMES", function (SESSION_NAMES)
                     currentSession = "pomodoro";
                     $scope.startStop();
                 }
-            };
-
-            $scope.testPlay = function () {
-                console.log("testing the ding");
-                timerDing.play();
             };
         }]
     };
