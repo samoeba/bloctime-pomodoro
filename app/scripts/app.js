@@ -1,4 +1,4 @@
-var blocTime = angular.module("blocTime", ["firebase", "ui.router", "directives", "filters"]);
+var blocTime = angular.module("blocTime", ["firebase", "ui.router", "directives", "filters", "services"]);
 
 blocTime.config(function($stateProvider, $locationProvider) {
     $locationProvider.html5Mode({
