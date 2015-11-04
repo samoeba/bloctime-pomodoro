@@ -7,8 +7,13 @@ pomodoroServices.factory("Tasks", ["$firebaseArray", function($firebaseArray) {
     ref = new Firebase("https://brilliant-torch-364.firebaseio.com/");
     tasks = $firebaseArray(ref);
 
+    var addTask = function (task) {
+        tasks.$add(task);
+    };
+
     return {
-        all: tasks
+        all: tasks,
+        addTask: addTask
     };
 
 }]);

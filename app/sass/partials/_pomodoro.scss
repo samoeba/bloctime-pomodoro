@@ -48,6 +48,15 @@ div[ui-view] {
                 background-color: darken(#464646, 5%);
             }
         }
+        .completed-tasks {
+            margin: 20px 0 0 0;
+            p {
+                font: 18px "Helvetic Neue", sans-serif;
+                color: #000;
+                padding-bottom: 10px;
+                border-bottom: 1px solid #464646;
+            }
+        }
     }
 }
 
