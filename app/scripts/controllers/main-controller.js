@@ -5,13 +5,14 @@ angular.module("blocTime")
 
         $scope.test = "Can you hear me now?";
 
-        $scope.newTask = { title: "" };
+        $scope.newTask = { title: "", created: "" };
 
         $scope.completedTasks = Tasks.all;
 
         $scope.addTask = function () {
+            $scope.newTask.created = new Date().getTime();
             Tasks.addTask(angular.copy($scope.newTask));
-            $scope.newTask = { title: "" };
+            $scope.newTask = { title: "", created: "" };
         };
 
     }]);

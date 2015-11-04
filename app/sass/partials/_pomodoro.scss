@@ -13,7 +13,7 @@ div[ui-view] {
     float: left;
     width: 22%;
     .container {
-        height: 100%;
+        min-height: 100%;
         padding: 20px;
         background-color: #e4e4e8;
         h1 {
