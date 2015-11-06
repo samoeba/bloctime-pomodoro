@@ -74,11 +74,11 @@ div[ui-view] {
         line-height: 60px;
         position: absolute;
         left: 47%;
-        top: 70px;
+        top: 760px;
     }
     .container {
         width: 100%;
-        margin-top: 220px;
+        margin-top: 327px;
         .timer {
             display: block;
             text-align: center;
@@ -87,6 +87,7 @@ div[ui-view] {
             border: 0;
             font: 200px "Helvetic Neue", sans-serif;
             color: #555;
+            background-color: transparent;
             &:focus {
                 outline: 0;
             };

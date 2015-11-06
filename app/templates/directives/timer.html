@@ -1,3 +1,22 @@
+<div class="tasks">
+    <div class="container">
+        <h1>Task History</h1>
+
+        <form name="taskHistory" role="form" novalidate ng-submit="addTask()">
+            <input type="text" ng-model="newTask.title"/>
+            <button type="submit" class="btn">Add Task</button>
+            <div class="completed-tasks">
+                <p ng-show="newTask.title" ng-model="newTask.title">{{ newTask.title }}</p>
+            </div>
+        </form>
+
+        <div class="completed-tasks">
+            <p ng-repeat="task in completedTasks | orderBy: '-created'">{{ task.title }}</p>
+        </div>
+
+    </div>
+</div>
+
 <div class="pomodoro">
     <p ng-show="sessionName">{{ totalPomodoros }} Pomodoro(s) Completed<br />{{ sessionName }} Session</p>
     <div class="container">
@@ -9,3 +28,5 @@
         </button>
     </div>
 </div>
+
+<div id="polar"></div>
