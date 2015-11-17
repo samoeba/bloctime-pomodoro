@@ -1,32 +1,22 @@
-<div class="tasks">
+<div class="pomodoro">
+    <p class="session-info" ng-show="sessionName">{{ totalPomodoros }} Pomodoro(s) Completed<br />{{ sessionName }} Session --- {{ interruptions }} Interruptions</p>
     <div class="container">
-        <h1>Task History</h1>
-
-        <form name="taskHistory" role="form" novalidate ng-submit="addTask()">
-            <input type="text" ng-model="newTask.title"/>
-            <button type="submit" class="btn">Add Task</button>
-            <div class="completed-tasks">
-                <p ng-show="newTask.title" ng-model="newTask.title">{{ newTask.title }}</p>
-            </div>
-        </form>
-
-        <div class="completed-tasks">
-            <p ng-repeat="task in completedTasks | orderBy: '-created'">{{ task.title }}</p>
+        <p class="timer">{{ timeInSeconds | prettyTime}}</p>
+        <div class="pomodoro-controls">
+            <button class="btn pomo-btn"
+                    ng-class="{'start-btn' : !sessionInProgress, 'reset-btn' : sessionInProgress, 'reset-btn--w-pause' : sessionInProgress && sessionName === 'Pomodoro'}"
+                    ng-click="startStop()">
+                    <span class="icn"></span>
+            </button>
+            <button class="btn pomo-btn icn pause-resume-btn"
+                    ng-show="sessionInProgress && sessionName === 'Pomodoro'"
+                    ng-class="{'pause-btn' : isRunning, 'resume-btn' : !isRunning}"
+                    ng-click="pauseResume()">
+                    <span class="icn"></span>
+            </button>
         </div>
 
+        <div id="polar"></div>
     </div>
 </div>
 
-<div class="pomodoro">
-    <p ng-show="sessionName">{{ totalPomodoros }} Pomodoro(s) Completed<br />{{ sessionName }} Session</p>
-    <div class="container">
-        <input type="text" value="{{timeInSeconds | prettyTime}}" class="timer"/>
-        <button class="btn"
-                ng-class="{'stop-button' : isRunning}"
-                ng-click="startStop()">
-                <span>{{ buttonText }}</span>
-        </button>
-    </div>
-</div>
-
-<div id="polar"></div>

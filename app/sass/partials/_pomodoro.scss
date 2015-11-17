@@ -9,26 +9,26 @@ div[ui-view] {
     height: 100%;
 }
 .tasks {
+    position: relative;
     height: 100%;
-    float: left;
-    width: 22%;
+    width: auto;
+    margin-right: 1200px;
     .container {
         min-height: 100%;
         padding: 20px;
-        background-color: #e4e4e8;
+        background-color: #ededed;
         h1 {
-            font: 32px "Helvetic Neue", sans-serif;
+            font: 40px "Helvetic Neue", sans-serif;
+            text-align: center;
             color: #464646;
-            margin-top: 0;
+            margin: 0 0 10px 0;
         }
-        input[type=text] {
+        input {
             box-sizing: border-box;
             display: block;
-            width: 100%;
             height: 50px;
-            margin: 0 auto;
             padding: 10px;
-            border: 0;
+            border: 2px solid #d6d6d6;
             border-radius: 4px;
             font: 22px "Helvetic Neue", sans-serif;
             color: #555;
@@ -36,25 +36,52 @@ div[ui-view] {
                 outline: 0;
             };
         }
-        .btn {
-            height: 50px;
-            border-radius: 4px;
-            margin: 20px 0 40px;
-            padding: 0 20px;
-            width: auto;
-            font: 18px "Helvetic Neue", sans-serif;
-            background-color: #464646;
-            &:hover {
-                background-color: darken(#464646, 5%);
-            }
+        .task-title {
+            float: left;
+            width: 76%;
+            margin-right: 4%;
+        }
+        .task-pomodoros {
+            width: 20%;
         }
         .completed-tasks {
             margin: 20px 0 0 0;
-            p {
-                font: 18px "Helvetic Neue", sans-serif;
-                color: #000;
-                padding-bottom: 20px;
-                border-bottom: 1px solid #464646;
+            div {
+                position: relative;
+                &:hover {
+                    background-color: rgba(0,0,0,.1);
+                    cursor: pointer;
+                }
+                p {
+                    font: 18px "Helvetic Neue", sans-serif;
+                    color: #000;
+                    padding: 20px 0 20px 6px;
+                    border-bottom: 1px solid #464646;
+                    margin: 0;
+                    .task-trash {
+                        position: absolute;
+                        display: block;
+                        width: 34px;
+                        height: 34px;
+                        background-color: transparent;
+                        cursor: pointer;
+                        right: 0;
+                        top: 18px;
+                    }
+                    .task-pomodoro-length {
+                        float: right;
+                        margin-right: 48px;
+                    }
+                }
+            }
+            .is-selected {
+                background-color: $start;
+                p {
+                    color: #ffffff !important;
+                }
+                &:hover {
+                    background-color: darken($start, 5%);
+                }
             }
         }
     }
@@ -62,9 +89,9 @@ div[ui-view] {
 
 .pomodoro {
     height: 100%;
-    width: 78%;
-    float: left;
-    p {
+    width: 1200px;
+    float: right;
+    .session-info {
         display: block;
         text-align: center;
         margin: 0 auto;
@@ -73,24 +100,33 @@ div[ui-view] {
         height: 120px;
         line-height: 60px;
         position: absolute;
-        left: 47%;
-        top: 760px;
+        left: 42%;
+        top: 8px;
     }
     .container {
+        position: relative;
+        min-height: 100%;
         width: 100%;
-        margin-top: 327px;
+        padding-top: 1px;
         .timer {
             display: block;
             text-align: center;
             margin: 0 auto;
+            margin-top: 327px;
             width: 600px;
             border: 0;
-            font: 200px "Helvetic Neue", sans-serif;
+            font: 170px "Helvetic Neue", sans-serif;
             color: #555;
             background-color: transparent;
             &:focus {
                 outline: 0;
             };
+        }
+        .pomodoro-controls {
+            margin: 200px auto 0;
+            width: 250px;
+            height: auto;
+            display: block;
         }
     }
 }

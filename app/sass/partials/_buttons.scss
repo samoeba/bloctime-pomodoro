@@ -1,18 +1,33 @@
 .btn {
-    margin: 0 auto;
     cursor: pointer;
     border: 0;
-    border-radius: 5px;
-    width: 290px;
-    height: 60px;
     display: block;
-    background-color: $start;
+    background-color: transparent;
     color: #fff;
-    &:hover {
-        background-color: darken($start, 5%);
-    }
     &:focus {
         outline: 0;
+    }
+}
+
+.icn {
+    margin: 0 auto;
+    display: block;
+    width: 60px;
+    height: 60px;
+    padding: 2px;
+    background-repeat: no-repeat;
+}
+
+.tasks-btn {
+    height: 50px;
+    width: 100%;
+    border-radius: 4px;
+    margin: 20px 0;
+    padding: 0 20px;
+    font: 18px "Helvetic Neue", sans-serif;
+    background-color: #464646;
+    &:hover {
+        background-color: darken(#464646, 5%);
     }
     span {
         font: 34px "Helvetic Neue", sans-serif;
@@ -20,16 +35,82 @@
     }
 }
 
-.test {
-    margin-top: 30px;
-    font: 34px "Helvetic Neue", sans-serif;
-    padding: 6px;
+.pomo-btn {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    margin: 0 auto;
+    display: block;
 }
 
-.stop-button {
-    //@extend .btn;
-    background-color: $error;
-    &:hover {
-        background-color: darken($error, 5%);
+.start-btn {
+    background-color: $start;
+    .icn {
+        background-image: url(/assets/images/icn-play.png);
+        background-size: 40px;
+        background-position: 15px 11px;
     }
+    &:hover {
+        background-color: darken($start, 5%);
+    }
+}
+
+.reset-btn {
+    background-color: $stop;
+    margin: 0 auto;
+    display: block;
+    float: none;
+    .icn {
+        background-image: url(/assets/images/icn-reset.png);
+        background-size: 54px;
+        background-position: 35% 3px;
+    }
+    &:hover {
+        background-color: darken($stop, 5%);
+    }
+}
+
+.reset-btn--w-pause {
+    margin: 0 !important;
+    float: left !important;
+}
+
+
+.pause-resume-btn {
+    margin: 0;
+    display: block;
+    float: right;
+}
+.pause-btn {
+    background-color: $stop;
+    background-image: url(/assets/images/icn-pause.png);
+    background-size: 36px;
+    background-position: 49% 50%;
+    &:hover {
+        background-color: darken($stop, 5%);
+    }
+}
+.resume-btn {
+    background-color: $start;
+    background-image: url(/assets/images/icn-play.png);
+    background-size: 40px;
+    background-position: 54% 50%;
+    &:hover {
+        background-color: darken($start, 5%);
+    }
+}
+
+
+.resume-btn {
+    @extend .pause-btn;
+}
+
+.trash-btn {
+    width: 26px;
+    height: 26px;
+    display: block;
+    background-color: transparent;
+    background-image: url(/assets/images/icn-trash.png);
+    background-size: contain;
+    background-repeat: no-repeat;
 }
