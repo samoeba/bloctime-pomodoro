@@ -2,39 +2,42 @@
 
 <div class="tasks">
     <div class="container">
-        <h1>Tasks</h1>
+        <!--<h1>Tasks</h1>-->
+        <section>
+            <ul class="nav nav-pills">
+                <li> <a href ng-click="showTodos()">Todo</a> </li>
+                <li> <a href ng-click="showCompleted()">Completed</a> </li>
+            </ul>
+        </section>
 
         <form name="taskHistory" role="form" novalidate ng-submit="addTask()">
             <input class="task-title" type="text" ng-model="newTask.title"/>
-            <input class="task-pomodoros" type="number" ng-model="newTask.pomodoros"/>
+            <input class="task-pomodoros" type="number" ng-model="newTask.pomosEst"/>
             <button type="submit" class="btn tasks-btn">Add Task</button>
-            <div class="completed-tasks">
+            <div class="todo-tasks">
                 <div>
                     <p ng-show="newTask.title" ng-model="newTask.title">{{ newTask.title }}
-                        <span class="task-pomodoro-length" ng-model="newTask.title">{{ newTask.pomodoros }}</span>
+                        <span class="task-pomodoro-length" ng-model="newTask.pomosEst">0/{{ newTask.pomosEst }}</span>
                     </p>
                 </div>
             </div>
         </form>
 
-        <div class="completed-tasks">
+        <div class="todo-tasks">
             <div ng-repeat="task in completedTasks | orderBy: '-created'"
                  ng-click="selectTask(task)"
-                 ng-mouseover="showTrash(task)"
-                 ng-mouseleave="hideTrash(task)"
-                 ng-class="{'is-selected' : task.isSelected}">
+                 ng-class="{'is-selected' : task.isSelected, 'completed-task' : task.isCompleted === true}"
+                 ng-show="task.isCompleted === 'false'"
+                 class="task-item">
                 <p>{{ task.title }}
-                    <span class="task-trash" ng-show="task.trashCanIsShowing" ng-click="removeTask(task)">
+                    <span class="task-trash" ng-click="removeTask(task, $event)">
                         <i class="trash-btn"></i>
                     </span>
-                    <span class="task-pomodoro-length">{{ task.pomodoros }}</span>
+                    <span class="task-pomodoro-length">{{ task.pomosComp }}/{{ task.pomosEst }}</span>
                 </p>
             </div>
         </div>
 
-        <button ng-click="logSelectedTask()">Selected Task</button>
 
     </div>
 </div>
-
-<!--ng-click="selectTask(task); completedTasks.$save(task)"-->

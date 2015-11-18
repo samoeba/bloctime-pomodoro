@@ -9,7 +9,7 @@ pomodoroDirectives.directive("timer", function () {
         scope: true,
         templateUrl: "/templates/directives/timer.html",
         controller: ["$scope", "$interval", function ($scope, $interval) {
-            var currentSession, determineSessionTime, determineButtonText, startCountdown, countdown,stopCountdown, nextSession, secondsRemaining, resumeCountdown;
+            var currentSession, determineSessionTime, determineButtonText, startCountdown, countdown, stopCountdown, nextSession, secondsRemaining, currentTaskStatus;
 
             var timerDing = new buzz.sound( "/assets/audio/ding", {
                 formats: [ "mp3" ],
@@ -69,6 +69,8 @@ pomodoroDirectives.directive("timer", function () {
 
             //=============================================== End Alert ================================================
 
+            //=============================================== Countdown ================================================
+
             countdown = function () {
                 startCountdown = $interval(function() {
                     $scope.timeInSeconds -= 1;
@@ -79,6 +81,9 @@ pomodoroDirectives.directive("timer", function () {
                         stopCountdown();
                         delayedSessionCompleteAlert();
                         $scope.isRunning = false;
+                        if (currentSession === "pomodoro" && $scope.currentTask) {
+                            currentTaskStatus();
+                        }
                         nextSession();
                     }
                 }, 1000);
@@ -87,6 +92,8 @@ pomodoroDirectives.directive("timer", function () {
             stopCountdown = function() {
                 $interval.cancel(startCountdown);
             };
+
+            //============================================== Next Session ==============================================
 
             nextSession = function() {
                 // Summary:
@@ -113,7 +120,30 @@ pomodoroDirectives.directive("timer", function () {
                 }
             };
 
+            //========================================== Current Task Status ===========================================
+
+            currentTaskStatus = function () {
+                var pomosComp = parseInt($scope.currentTask.pomosComp, 10);
+                pomosComp += 1;
+                $scope.currentTask.pomosComp = pomosComp;
+                //$scope.completedTasks.$save($scope.currentTask.pomosComp);
+                //$scope.currentTask.set({pomosComp: pomosComp});
+                $scope.currentTask.isSelected = false;
+                $scope.completedTasks.$save($scope.currentTask);
+                if ($scope.currentTask.pomosComp >= $scope.currentTask.pomosEst) {
+                    $scope.currentTask.isCompleted = true;
+                    var taskTimeCompleted = parseInt($scope.currentTask.created);
+                    $scope.currentTask.created = taskTimeCompleted / 2;
+                    $scope.completedTasks.$save($scope.currentTask);
+                    $scope.currentTask = null;
+                }
+            };
+
+            //============================================ Start startStop =============================================
+
             $scope.startStop = function () {
+                console.log($scope.currentTask);
+
                 // Summary:
                 //    Operates the start and reset button
 
@@ -140,7 +170,6 @@ pomodoroDirectives.directive("timer", function () {
                 // Since everything else is being reset, we also reset the interruptions
                 $scope.interruptions = 0;
 
-
                 $scope.isRunning = !$scope.isRunning;
                 determineSessionTime();
                 $scope.timeInSeconds = $scope.timerTime;
@@ -149,6 +178,11 @@ pomodoroDirectives.directive("timer", function () {
 
                 countdown();
             };
+
+            //============================================= End startStop ==============================================
+
+
+            //=========================================== Start pauseResume ============================================
 
             $scope.pauseResume = function () {
                 // Summary:
@@ -168,6 +202,9 @@ pomodoroDirectives.directive("timer", function () {
                 $scope.isRunning = !$scope.isRunning;
                 console.log($scope.isRunning + " – from pauseResume");
             };
+
+            //=========================================== End pauseResume ============================================
+
 
             //==========================================================================================================
             //============================================== Polar Clock ===============================================

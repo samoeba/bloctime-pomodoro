@@ -6,46 +6,52 @@ angular.module("blocTime")
     .controller("MainCtrl", ["$scope", "Tasks", function($scope, Tasks) {
         "use strict";
 
-        $scope.newTask = { title: "", created: "", pomodoros: "", isSelected: "", trashCanIsShowing: "" };
-        $scope.taskSelected = false;
+        $scope.newTask = { title: "", created: "", pomosEst: "", pomosComp: "0", /*isSelected: "",*/ isCompleted: "false" };
+        $scope.currentTask = null;
         $scope.completedTasks = Tasks.all;
 
         $scope.addTask = function () {
             $scope.newTask.created = new Date().getTime();
-            $scope.newTask.trashCanIsShowing = false;
-            $scope.newTask.isSelected = false;
             Tasks.addTask(angular.copy($scope.newTask));
-            $scope.newTask = { title: "", created: "", trashCanIsShowing: "" };
+            $scope.newTask = { title: "", created: "", pomosEst: "", pomosComp: "0", /*isSelected: "",*/ isCompleted: "false" };
         };
 
-        $scope.showTrash = function (task) {
-            task.trashCanIsShowing = true;
-        };
-
-        $scope.hideTrash = function (task) {
-            task.trashCanIsShowing = false;
-        };
-
-        $scope.removeTask = function (event) {
+        $scope.removeTask = function (task, event) {
             console.log("Trashed that task!");
-            Tasks.removeTask(event);
+            Tasks.removeTask(task);
+            event.stopPropagation();
         };
 
         $scope.selectTask = function (task) {
-            //console.log("taskSelected === " + $scope.taskSelected);
-            if ($scope.taskSelected === true) {
-                $scope.taskSelected = false;
-                $scope.currentTask.isSelected = false;
-                //Tasks.updateTask($scope.currentTask.$id);
+            if (task === $scope.currentTask) {
+                task.isSelected = false;
+                $scope.currentTask = null;
+                return;
             }
-            $scope.taskSelected = true;
+            if ($scope.currentTask) {
+                $scope.currentTask.isSelected = false;
+                //$scope.completedTasks.$save($scope.currentTask);
+            }
             task.isSelected = true;
-            $scope.currentTask = angular.copy(task);
-            $scope.completedTasks.$save(task);
+            $scope.currentTask = task;
+            //$scope.completedTasks.$save(task);
         };
 
-        $scope.logSelectedTask = function () {
-            console.log($scope.currentTask);
+        var allTasks = document.querySelectorAll(".task-item");
+
+        $scope.showCompleted = function () {
+            console.log("Showing completed");
+            console.log(allTasks);
+            for (var i = 0; i < allTasks.length; i++) {
+                allTasks[i].setAttribute("ng-show", "task.isCompleted === true")
+            }
+        };
+
+        $scope.showTodos = function () {
+            console.log("Showing todos");
+            for (var i = 0; i < allTasks.length; i++) {
+                allTasks[i].setAttribute("ng-show", "task.isCompleted === 'false'")
+            }
         };
 
     }]);
