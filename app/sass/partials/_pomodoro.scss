@@ -34,6 +34,7 @@ div[ui-view] {
                 padding: 0;
                 height: 40px;
                 > li {
+                    float: left;
                     width: auto;
                     height: auto;
                     position: relative;
@@ -41,47 +42,34 @@ div[ui-view] {
                     > a {
                         position: relative;
                         display: block;
+                        width: 110px;
                         padding: 10px 20px;
                         text-decoration: none;
+                        color: #464646;
+                        //background-color: #464646;
+                        //border: 2px solid darken(#464646, 10%);
+                        //border-radius: 4px;
+                        font: 20px "Helvetic Neue", sans-serif;
+                        text-align: center;
+                        vertical-align: middle;
                         &:hover, &:focus {
                             text-decoration: none;
-                            background-color: darken(#464646, 5%);
+                            border-bottom: 4px solid lighten(#464646, 50%);
                             cursor: pointer;
                         }
                     }
+                    + li {
+                        margin-left: 10px;
+                    }
+                    .active {
+                        color: $start;
+                        border-bottom: 4px solid $start;
+                        &:hover {
+                            border-bottom: 4px solid $start;
+                        }
+                    }
                 }
-            }
-        }
-        .nav-pills > li {
-            float: left;
-            &:first-child {
-                > a {
-                    border-radius: 4px 0 0 4px;
-                    border-right: 0 !important;
-                }
-            }
-            > a {
-                background-color: #464646;
-                border-radius: 4px;
-                font: 16px "Helvetic Neue", sans-serif;
-                text-align: center;
-                vertical-align: middle;
-                color: #fff;
-                border: 2px solid darken(#464646, 10%);
-            }
-            + li {
-                //margin-left: 10px;
-                a {
-                    border-radius: 0 4px 4px 0;
-                }
-            }
-            .active > a {
-                color: #fff;
-                background-color: #337ab7;
-                &:hover, &:focus {
-                    color: #fff;
-                    background-color: #337ab7;
-                }
+
             }
         }
         input {
@@ -96,6 +84,10 @@ div[ui-view] {
             &:focus {
                 outline: 0;
             };
+            &[placeholder] {
+                font-style: italic;
+                font-weight: 300;
+            }
         }
         .task-title {
             float: left;
@@ -164,6 +156,9 @@ div[ui-view] {
                 &:hover {
                     background-color: darken($start, 5%);
                 }
+            }
+            .hide-task {
+                display: none;
             }
         }
     }

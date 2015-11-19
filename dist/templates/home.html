@@ -5,14 +5,30 @@
         <!--<h1>Tasks</h1>-->
         <section>
             <ul class="nav nav-pills">
-                <li> <a href ng-click="showTodos()">Todo</a> </li>
-                <li> <a href ng-click="showCompleted()">Completed</a> </li>
+                <li>
+                    <a ng-click="tab = 'all'"
+                       ng-class="{'active' : tab === 'all'}">
+                        All
+                    </a>
+                </li>
+                <li>
+                    <a ng-click="tab = 'todo'"
+                       ng-class="{'active' : tab === 'todo'}">
+                       Todo
+                    </a>
+                </li>
+                <li>
+                    <a ng-click="tab = 'completed'"
+                       ng-class="{'active' : tab === 'completed'}">
+                       Completed
+                    </a>
+                </li>
             </ul>
         </section>
 
         <form name="taskHistory" role="form" novalidate ng-submit="addTask()">
-            <input class="task-title" type="text" ng-model="newTask.title"/>
-            <input class="task-pomodoros" type="number" ng-model="newTask.pomosEst"/>
+            <input class="task-title" type="text" placeholder="What's your task?" ng-model="newTask.title"/>
+            <input class="task-pomodoros" type="number" placeholder="0" ng-model="newTask.pomosEst"/>
             <button type="submit" class="btn tasks-btn">Add Task</button>
             <div class="todo-tasks">
                 <div>
@@ -26,8 +42,8 @@
         <div class="todo-tasks">
             <div ng-repeat="task in completedTasks | orderBy: '-created'"
                  ng-click="selectTask(task)"
-                 ng-class="{'is-selected' : task.isSelected, 'completed-task' : task.isCompleted === true}"
-                 ng-show="task.isCompleted === 'false'"
+                 ng-class="{'is-selected' : task.isSelected, 'completed-task' : task.isCompleted === true, 'hide-task' : task.isCompleted === false && tab === 'completed'}"
+                 ng-hide="task.isCompleted === true && tab === 'todo'"
                  class="task-item">
                 <p>{{ task.title }}
                     <span class="task-trash" ng-click="removeTask(task, $event)">
@@ -41,3 +57,7 @@
 
     </div>
 </div>
+
+
+<!--ng-show="task.isCompleted === false && tab === 'todo'"-->
+<!--ng-hide="task.isCompleted === true && tab === 'completed'"-->
