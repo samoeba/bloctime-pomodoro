@@ -212,17 +212,7 @@ pomodoroDirectives.directive("timer", function () {
 
             var width, height, radius, spacing, color, arc, svg, field;
 
-            width = 710;
-            height = 710;
-            radius = Math.min(width, height) / 1.9;
-            spacing = 0.04;
-
-            if (window.innerWidth < 1225) {
-                width = 510;
-                height = 510;
-                radius = Math.min(width, height) / 1.9;
-                spacing = 0.06;
-            }
+            width = 710; height = 710; radius = Math.min(width, height) / 1.9; spacing = 0.04;
 
             color = d3.scale.linear()
                 .range(["hsl(10, 75%, 51%)", "hsl(155, 86%, 35%)"])

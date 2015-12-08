@@ -6,9 +6,14 @@ blocTime.config(function($stateProvider, $locationProvider) {
         requireBase: false
     });
     $stateProvider
-        .state('home', {
-            url: '/home',
-            templateUrl: '/templates/home.html',
+        .state('landing', {
+            url: '/',
+            templateUrl: '/templates/login.html',
+            controller: 'LoginCtrl'
+        })
+        .state('pomodoro', {
+            url: '/pomodoro',
+            templateUrl: '/templates/pomodoro.html',
             controller: 'MainCtrl'
         });
 });

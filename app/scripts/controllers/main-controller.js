@@ -3,23 +3,61 @@ var $j = jQuery.noConflict();
 
 angular.module("blocTime")
 
-    .controller("MainCtrl", ["$scope", "Tasks", function($scope, Tasks) {
+    .controller("MainCtrl", ["$rootScope", "$scope", "$state", "FBData", function($rootScope, $scope, $state, FBData) {
         "use strict";
+
+        var users, userData;
+        users = FBData.users;
+
+        $scope.logout = function () {
+            users.$unauth();
+            $state.go("landing");
+            $rootScope.authData = null;
+            $rootScope.userId = null;
+        };
+
+        $scope.clickMe = function () {
+            console.log($rootScope.authData);
+        };
+
+        userData = FBData.users.$getAuth();
+
+
+        if(userData) {
+            $rootScope.authData = userData;
+            $rootScope.userId = userData.uid;
+            console.log("got data");
+        }
+        //else {
+        //    FBData.users.$getAuth();
+        //    console.log("got here");
+        //}
+
+
+
+        //================================================= Tasks ======================================================
 
         $scope.newTask = { title: "", created: "", pomosEst: "", pomosComp: "0", /*isSelected: "",*/ isCompleted: false };
         $scope.currentTask = null;
         $scope.tab = "todo";
-        $scope.completedTasks = Tasks.all;
+        FBData.all.then(function (userTasks) {
+            console.log("Hey-o");
+            $scope.completedTasks = userTasks;
+        });
+
+        if(!$rootScope.authData) {
+            $scope.completedTasks = $rootScope.guestTasks;
+        }
 
         $scope.addTask = function () {
             $scope.newTask.created = new Date().getTime();
-            Tasks.addTask(angular.copy($scope.newTask));
+            FBData.addTask(angular.copy($scope.newTask));
             $scope.newTask = { title: "", created: "", pomosEst: "", pomosComp: "0", /*isSelected: "",*/ isCompleted: false };
         };
 
         $scope.removeTask = function (task, event) {
             console.log("Trashed that task!");
-            Tasks.removeTask(task);
+            FBData.removeTask(task);
             event.stopPropagation();
         };
 
@@ -34,11 +72,9 @@ angular.module("blocTime")
             }
             if ($scope.currentTask) {
                 $scope.currentTask.isSelected = false;
-                //$scope.completedTasks.$save($scope.currentTask);
             }
             task.isSelected = true;
             $scope.currentTask = task;
-            //$scope.completedTasks.$save(task);
         };
 
         var allTasks = document.getElementsByClassName("task-item");

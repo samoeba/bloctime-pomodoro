@@ -1,14 +1,15 @@
+<button class="logout" ng-click="logout()">Logout</button>
+
 <timer></timer>
 
 <div class="tasks">
     <div class="container">
-        <!--<h1>Tasks</h1>-->
         <section>
             <ul class="nav nav-pills">
                 <li>
                     <a ng-click="tab = 'all'"
                        ng-class="{'active' : tab === 'all'}">
-                        All
+                       All
                     </a>
                 </li>
                 <li>
@@ -42,22 +43,18 @@
         <div class="todo-tasks">
             <div ng-repeat="task in completedTasks | orderBy: '-created'"
                  ng-click="selectTask(task)"
-                 ng-class="{'is-selected' : task.isSelected, 'completed-task' : task.isCompleted === true, 'hide-task' : task.isCompleted === false && tab === 'completed'}"
-                 ng-hide="task.isCompleted === true && tab === 'todo'"
+                 ng-class="{'is-selected' : task.isSelected, 'completed-task' : task.isCompleted === true, 'hide-task' : !task.isCompleted && tab === 'completed'}"
+                 ng-hide="task.isCompleted && tab === 'todo'"
                  class="task-item">
                 <p>{{ task.title }}
-                    <span class="task-trash" ng-click="removeTask(task, $event)">
-                        <i class="trash-btn"></i>
-                    </span>
+            <span class="task-trash" ng-click="removeTask(task, $event)">
+                <i class="trash-btn"></i>
+            </span>
                     <span class="task-pomodoro-length">{{ task.pomosComp }}/{{ task.pomosEst }}</span>
                 </p>
             </div>
         </div>
 
-
+        <!--<button ng-click="clickMe()">Auth Data</button>-->
     </div>
 </div>
-
-
-<!--ng-show="task.isCompleted === false && tab === 'todo'"-->
-<!--ng-hide="task.isCompleted === true && tab === 'completed'"-->

@@ -1,9 +1,15 @@
 #polar {
     font: 10px sans-serif;
     position: absolute;
-    left: 194px;
+    left: 145px;
     top: 66px;
     z-index: -99;
+    @media screen and (max-width: $timer-break-xlarge) {
+        left: 45px;
+    }
+    @media screen and (max-width: $timer-break-large) {
+        left: -5px;
+    }
 }
 
 text {

@@ -13,6 +13,13 @@ div[ui-view] {
     height: 100%;
     width: auto;
     margin-right: $pomodoroWidth;
+    //Timer width break point
+    @media screen and (max-width: $timer-break-xlarge) {
+        margin-right: 800px;
+    }
+    @media screen and (max-width: $timer-break-large) {
+        margin-right: 700px;
+    }
     .container {
         min-height: 100%;
         padding: 20px;
@@ -135,7 +142,7 @@ div[ui-view] {
             .completed-task {
                 p {
                     font-style: italic;
-                    color: #6c6662 !important;
+                    color: #9a9490 !important;
                     &:after {
                         content: '';
                         position: absolute;
@@ -144,7 +151,7 @@ div[ui-view] {
                         width: 98%;
                         left: 1%;
                         top: 50%;
-                        background-color: #6c6662;
+                        background-color: #9a9490;
                     }
                 }
             }
@@ -168,6 +175,13 @@ div[ui-view] {
     height: 100%;
     width: $pomodoroWidth;
     float: right;
+    //Timer width break point
+    @media screen and (max-width: $timer-break-xlarge) {
+        width: 800px;
+    }
+    @media screen and (max-width: $timer-break-large) {
+        width: 700px;
+    }
     .session-info {
         display: block;
         text-align: center;

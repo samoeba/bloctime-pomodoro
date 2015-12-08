@@ -100,7 +100,6 @@
     }
 }
 
-
 .resume-btn {
     @extend .pause-btn;
 }
@@ -113,4 +112,70 @@
     background-image: url(/assets/images/icn-trash.png);
     background-size: contain;
     background-repeat: no-repeat;
+}
+
+.login-btn {
+    display: block;
+    width: 400px;
+    margin: 30px auto 0;
+    text-align: center;
+    border: solid 4px;
+    border-radius: 4px;
+    background-color: darkgray;
+    padding: 24px 0 20px;
+    font: 27px "Gotham Rounded","Helvetic Neue", sans-serif;
+    text-decoration: none;
+    .logo-container + & {
+        margin-top: 60px !important;
+    }
+    @media screen and (max-width: $login-break-small) {
+        width: 320px;
+        font-size: 20px;
+    }
+    @media screen and (max-width: $login-break-xsmall) {
+        width: 280px;
+    }
+}
+
+.google-btn {
+    background-color: $stop;
+    border-color: darken($stop, 5%);
+    text-align: right;
+    .google-logo {
+        display: inline-block;
+        background-image: url("/assets/images/google-logo.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 100px;
+        height: 35px;
+        float: right;
+        margin: 0 68px 0 9px;
+        @media screen and (max-width: $login-break-small) {
+            width: 84px;
+            margin: 0 54px 0 9px;
+        }
+        @media screen and (max-width: $login-break-xsmall) {
+            margin: 0 38px 0 9px;
+        }
+    }
+    &:hover {
+        background-color: darken($stop, 4%);
+        border-color: darken($stop, 9%);
+    }
+    &:active {
+        background-color: darken($stop, 8%);
+        border-color: darken($stop, 13%);
+    }
+}
+
+.guest-btn {
+    border-color: darken(darkgray, 8%);
+    &:hover {
+        background-color: darken(darkgray, 5%);
+        border-color: darken(darkgray, 13%);
+    }
+    &:active {
+        background-color: darken(darkgray, 8%);
+        border-color: darken(darkgray, 17%);
+    }
 }

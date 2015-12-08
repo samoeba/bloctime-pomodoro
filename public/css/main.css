@@ -1,0 +1,335 @@
+.btn {
+  cursor: pointer;
+  border: 0;
+  display: block;
+  background-color: transparent;
+  color: #fff; }
+  .btn:focus {
+    outline: 0; }
+
+.icn {
+  margin: 0 auto;
+  display: block;
+  width: 60px;
+  height: 60px;
+  padding: 2px;
+  background-repeat: no-repeat; }
+
+.tasks-btn {
+  height: 50px;
+  width: 100%;
+  border-radius: 4px;
+  margin: 20px 0;
+  padding: 0 20px;
+  font: 18px "Helvetic Neue", sans-serif;
+  background-color: #464646; }
+  .tasks-btn:hover {
+    background-color: #393939; }
+  .tasks-btn span {
+    font: 34px "Helvetic Neue", sans-serif;
+    padding: 6px; }
+
+.pomo-btn {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  margin: 0 auto;
+  display: block; }
+
+.start-btn {
+  background-color: #0ca566; }
+  .start-btn .icn {
+    background-image: url(/assets/images/icn-play.png);
+    background-size: 40px;
+    background-position: 15px 11px; }
+  .start-btn:hover {
+    background-color: #0a8d57; }
+
+.reset-btn {
+  background-color: #F24E38;
+  margin: 0 auto;
+  display: block;
+  float: none; }
+  .reset-btn .icn {
+    background-image: url(/assets/images/icn-reset.png);
+    background-size: 54px;
+    background-position: 35% 3px; }
+  .reset-btn:hover {
+    background-color: #f03820; }
+
+.reset-btn--w-pause {
+  margin: 0 !important;
+  float: left !important; }
+
+.pause-resume-btn {
+  margin: 0;
+  display: block;
+  float: right; }
+
+.pause-btn, .resume-btn {
+  background-color: #F24E38;
+  background-image: url(/assets/images/icn-pause.png);
+  background-size: 36px;
+  background-position: 49% 50%; }
+  .pause-btn:hover, .resume-btn:hover {
+    background-color: #f03820; }
+
+.resume-btn {
+  background-color: #0ca566;
+  background-image: url(/assets/images/icn-play.png);
+  background-size: 40px;
+  background-position: 54% 50%; }
+  .resume-btn:hover {
+    background-color: #0a8d57; }
+
+.trash-btn {
+  width: 26px;
+  height: 26px;
+  display: block;
+  background-color: transparent;
+  background-image: url(/assets/images/icn-trash.png);
+  background-size: contain;
+  background-repeat: no-repeat; }
+
+.login-btn {
+  display: block;
+  width: 400px;
+  margin: 30px auto 0;
+  text-align: center;
+  border: solid 4px;
+  border-radius: 4px;
+  background-color: darkgray;
+  padding: 24px 0 20px;
+  font: 27px "Gotham Rounded", "Helvetic Neue", sans-serif;
+  text-decoration: none; }
+  .logo-container + .login-btn {
+    margin-top: 60px !important; }
+
+.google-btn {
+  background-color: #F24E38;
+  border-color: #f03820;
+  text-align: right; }
+  .google-btn .google-logo {
+    display: inline-block;
+    background-image: url("/assets/images/google-logo.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 100px;
+    height: 35px;
+    float: right;
+    margin: 0 68px 0 9px; }
+  .google-btn:hover {
+    background-color: #f13d25;
+    border-color: #ed290f; }
+  .google-btn:active {
+    background-color: #ef2c12;
+    border-color: #d9260e; }
+
+.guest-btn {
+  border-color: #959595; }
+  .guest-btn:hover {
+    background-color: #9c9c9c;
+    border-color: #888888; }
+  .guest-btn:active {
+    background-color: #959595;
+    border-color: #7e7e7e; }
+
+html {
+  height: 100%; }
+
+body {
+  height: 100%;
+  margin: 0; }
+
+div[ui-view] {
+  height: 100%; }
+
+.tasks {
+  position: relative;
+  height: 100%;
+  width: auto;
+  margin-right: 1100px; }
+  .tasks .container {
+    min-height: 100%;
+    padding: 20px;
+    background-color: #ededed; }
+    .tasks .container h1 {
+      font: 40px "Helvetic Neue", sans-serif;
+      text-align: center;
+      color: #464646;
+      margin: 0 0 10px 0; }
+    .tasks .container section {
+      text-align: center;
+      margin-bottom: 18px; }
+      .tasks .container section .nav {
+        box-sizing: border-box;
+        display: inline-block;
+        list-style: none;
+        margin: 0 auto;
+        padding: 0;
+        height: 40px; }
+        .tasks .container section .nav > li {
+          float: left;
+          width: auto;
+          height: auto;
+          position: relative;
+          display: block; }
+          .tasks .container section .nav > li > a {
+            position: relative;
+            display: block;
+            width: 110px;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #464646;
+            font: 20px "Helvetic Neue", sans-serif;
+            text-align: center;
+            vertical-align: middle; }
+            .tasks .container section .nav > li > a:hover, .tasks .container section .nav > li > a:focus {
+              text-decoration: none;
+              border-bottom: 4px solid #c6c6c6;
+              cursor: pointer; }
+          .tasks .container section .nav > li + li {
+            margin-left: 10px; }
+          .tasks .container section .nav > li .active {
+            color: #0ca566;
+            border-bottom: 4px solid #0ca566; }
+            .tasks .container section .nav > li .active:hover {
+              border-bottom: 4px solid #0ca566; }
+    .tasks .container input {
+      box-sizing: border-box;
+      display: block;
+      height: 50px;
+      padding: 10px;
+      border: 2px solid #d6d6d6;
+      border-radius: 4px;
+      font: 22px "Helvetic Neue", sans-serif;
+      color: #555; }
+      .tasks .container input:focus {
+        outline: 0; }
+      .tasks .container input[placeholder] {
+        font-style: italic;
+        font-weight: 300; }
+    .tasks .container .task-title {
+      float: left;
+      width: 76%;
+      margin-right: 4%; }
+    .tasks .container .task-pomodoros {
+      width: 20%; }
+    .tasks .container .todo-tasks {
+      margin: 20px 0 0 0; }
+      .tasks .container .todo-tasks div {
+        position: relative; }
+        .tasks .container .todo-tasks div:hover {
+          background-color: rgba(0, 0, 0, 0.1);
+          cursor: pointer; }
+          .tasks .container .todo-tasks div:hover .task-trash {
+            display: block; }
+        .tasks .container .todo-tasks div p {
+          position: relative;
+          font: 18px "Helvetic Neue", sans-serif;
+          color: #464646;
+          padding: 20px 0 20px 6px;
+          border-bottom: 1px solid #464646;
+          margin: 0; }
+          .tasks .container .todo-tasks div p .task-trash {
+            position: absolute;
+            display: none;
+            width: 34px;
+            height: 34px;
+            background-color: transparent;
+            cursor: pointer;
+            right: 0;
+            top: 18px; }
+          .tasks .container .todo-tasks div p .task-pomodoro-length {
+            float: right;
+            margin-right: 48px; }
+      .tasks .container .todo-tasks .completed-task p {
+        font-style: italic;
+        color: #9a9490 !important; }
+        .tasks .container .todo-tasks .completed-task p:after {
+          content: '';
+          position: absolute;
+          display: block;
+          height: 1px;
+          width: 98%;
+          left: 1%;
+          top: 50%;
+          background-color: #9a9490; }
+      .tasks .container .todo-tasks .is-selected {
+        background-color: #0ca566; }
+        .tasks .container .todo-tasks .is-selected p {
+          color: #ffffff !important; }
+        .tasks .container .todo-tasks .is-selected:hover {
+          background-color: #0a8d57; }
+      .tasks .container .todo-tasks .hide-task {
+        display: none; }
+
+.pomodoro {
+  height: 100%;
+  width: 1100px;
+  float: right; }
+  .pomodoro .session-info {
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+    font: 40px "Helvetic Neue", sans-serif;
+    width: auto;
+    height: 120px;
+    line-height: 60px;
+    position: absolute;
+    left: 42%;
+    top: 8px; }
+  .pomodoro .container {
+    position: relative;
+    min-height: 100%;
+    width: 100%;
+    padding-top: 1px; }
+    .pomodoro .container .timer {
+      display: block;
+      text-align: center;
+      margin: 0 auto;
+      margin-top: 327px;
+      width: 600px;
+      border: 0;
+      font: 170px "Helvetic Neue", sans-serif;
+      color: #555;
+      background-color: transparent; }
+      .pomodoro .container .timer:focus {
+        outline: 0; }
+    .pomodoro .container .pomodoro-controls {
+      margin: 200px auto 0;
+      width: 250px;
+      height: auto;
+      display: block; }
+
+#polar {
+  font: 10px sans-serif;
+  position: absolute;
+  left: 194px;
+  top: 66px;
+  z-index: -99; }
+
+text {
+  text-anchor: middle; }
+
+.logout {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  z-index: 1000; }
+
+#login-page {
+  width: 100%;
+  min-height: 100%;
+  background-color: #f6f0e7; }
+  #login-page .login-container {
+    display: block;
+    width: 90%;
+    margin: 0 auto; }
+    #login-page .login-container .logo-container {
+      display: block;
+      width: 500px;
+      margin: 0 auto; }
+      #login-page .login-container .logo-container .pomodoro-logo {
+        width: 100%;
+        margin-top: 110px; }
