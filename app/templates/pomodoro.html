@@ -6,19 +6,19 @@
     <div class="container">
         <section>
             <ul class="nav nav-pills">
-                <li>
+                <li ng-class="{'active-li' : tab === 'all'}">
                     <a ng-click="tab = 'all'"
                        ng-class="{'active' : tab === 'all'}">
                        All
                     </a>
                 </li>
-                <li>
+                <li ng-class="{'active-li' : tab === 'todo'}">
                     <a ng-click="tab = 'todo'"
                        ng-class="{'active' : tab === 'todo'}">
                        Todo
                     </a>
                 </li>
-                <li>
+                <li ng-class="{'active-li' : tab === 'completed'}">
                     <a ng-click="tab = 'completed'"
                        ng-class="{'active' : tab === 'completed'}">
                        Completed

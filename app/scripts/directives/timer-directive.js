@@ -1,3 +1,4 @@
+var $j = jQuery.noConflict();
 var pomodoroDirectives = angular.module("directives", []);
 
 pomodoroDirectives.directive("timer", function () {
@@ -8,7 +9,7 @@ pomodoroDirectives.directive("timer", function () {
         replace: false,
         scope: true,
         templateUrl: "/templates/directives/timer.html",
-        controller: ["$scope", "$interval", function ($scope, $interval) {
+        controller: ["$scope", "$interval", "$window", function ($scope, $interval, $window) {
             var currentSession, determineSessionTime, determineButtonText, startCountdown, countdown, stopCountdown, nextSession, secondsRemaining, currentTaskStatus;
 
             var timerDing = new buzz.sound( "/assets/audio/ding", {
@@ -210,6 +211,7 @@ pomodoroDirectives.directive("timer", function () {
             //============================================== Polar Clock ===============================================
             //==========================================================================================================
 
+
             var width, height, radius, spacing, color, arc, svg, field;
 
             width = 710;
@@ -217,12 +219,37 @@ pomodoroDirectives.directive("timer", function () {
             radius = Math.min(width, height) / 1.9;
             spacing = 0.04;
 
-            if (window.innerWidth < 1225) {
-                width = 510;
-                height = 510;
+            if ($window.innerWidth < 1225) {
+                width = 600;
+                height = 600;
                 radius = Math.min(width, height) / 1.9;
-                spacing = 0.06;
+                spacing = 0.05;
             }
+
+            //$j($window).resize(function(){
+            //    console.log($window.innerWidth);
+            //
+            //    if ($window.innerWidth < 1225) {
+            //        width = 510;
+            //        height = 510;
+            //        radius = Math.min(width, height) / 1.9;
+            //        spacing = 0.06;
+            //        console.log("got here");
+            //    }
+            //
+            //});
+
+            //$scope.$watch(function(){
+            //    return $window.innerWidth;
+            //}, function(newValue) {
+            //    console.log(newValue);
+            //    //if (newValue < 1225) {
+            //    //    width = 510;
+            //    //    height = 510;
+            //    //    radius = Math.min(width, height) / 1.9;
+            //    //    spacing = 0.06;
+            //    //}
+            //});
 
             color = d3.scale.linear()
                 .range(["hsl(10, 75%, 51%)", "hsl(155, 86%, 35%)"])

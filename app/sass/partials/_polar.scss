@@ -10,6 +10,13 @@
     @media screen and (max-width: $timer-break-large) {
         left: -5px;
     }
+    @media screen and (max-width: $timer-break-large2) {
+        left: 50px;
+        top: 58px;
+    }
+    @media screen and (max-width: $timer-break-medium) {
+        left: 0;
+    }
 }
 
 text {

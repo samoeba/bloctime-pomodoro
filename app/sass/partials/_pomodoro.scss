@@ -20,6 +20,9 @@ div[ui-view] {
     @media screen and (max-width: $timer-break-large) {
         margin-right: 700px;
     }
+    @media screen and (max-width: $timer-break-medium) {
+        margin-right: 600px;
+    }
     .container {
         min-height: 100%;
         padding: 20px;
@@ -31,8 +34,12 @@ div[ui-view] {
             margin: 0 0 10px 0;
         }
         section {
+            width: 100%;
             text-align: center;
             margin-bottom: 18px;
+            @media screen and (max-width: $timer-break-large2) {
+                margin-bottom: 110px;
+            }
             .nav {
                 box-sizing: border-box;
                 display: inline-block;
@@ -40,12 +47,27 @@ div[ui-view] {
                 margin: 0 auto;
                 padding: 0;
                 height: 40px;
+                @media screen and (max-width: $timer-break-large2) {
+                    width: 100%;
+                }
                 > li {
                     float: left;
                     width: auto;
                     height: auto;
                     position: relative;
                     display: block;
+                    @media screen and (max-width: $timer-break-large2) {
+                        width: 100%;
+                        text-align: center;
+                        padding-left: 0;
+                        margin-bottom: 5px;
+                        border-radius: 4px;
+                        background-color: rgba(0,0,0,.1);
+                        &:hover {
+                            cursor: pointer;
+                            background-color: rgba(0,0,0,.18);
+                        }
+                    }
                     > a {
                         position: relative;
                         display: block;
@@ -53,30 +75,54 @@ div[ui-view] {
                         padding: 10px 20px;
                         text-decoration: none;
                         color: #464646;
-                        //background-color: #464646;
-                        //border: 2px solid darken(#464646, 10%);
-                        //border-radius: 4px;
                         font: 20px "Helvetic Neue", sans-serif;
                         text-align: center;
                         vertical-align: middle;
+                        @media screen and (max-width: $timer-break-large2) {
+                            width: 100%;
+                            text-align: center;
+                            padding: 10px 0;
+                            margin: 0 auto;
+                        }
                         &:hover, &:focus {
                             text-decoration: none;
                             border-bottom: 4px solid lighten(#464646, 50%);
                             cursor: pointer;
+                            @media screen and (max-width: $timer-break-large2) {
+                                border: none;
+                            }
                         }
                     }
                     + li {
                         margin-left: 10px;
+                        @media screen and (max-width: $timer-break-large2) {
+                            margin-left: 0;
+                        }
                     }
                     .active {
                         color: $start;
                         border-bottom: 4px solid $start;
+                        @media screen and (max-width: $timer-break-large2) {
+                            border: none;
+                            color: #fff;
+                        }
                         &:hover {
                             border-bottom: 4px solid $start;
+                            @media screen and (max-width: $timer-break-large2) {
+                                border: none;
+                            }
                         }
                     }
                 }
-
+                .active-li {
+                    @media screen and (max-width: $timer-break-large2) {
+                        background-color: $start;
+                        color: #fff;
+                        &:hover {
+                            background-color: $start;
+                        }
+                    }
+                }
             }
         }
         input {
@@ -182,6 +228,9 @@ div[ui-view] {
     @media screen and (max-width: $timer-break-large) {
         width: 700px;
     }
+    @media screen and (max-width: $timer-break-medium) {
+        width: 600px;
+    }
     .session-info {
         display: block;
         text-align: center;
@@ -212,6 +261,10 @@ div[ui-view] {
             &:focus {
                 outline: 0;
             };
+            @media screen and (max-width: $timer-break-large2) {
+                margin-top: 270px;
+                font-size: 150px;
+            }
         }
         .pomodoro-controls {
             margin: 200px auto 0;
